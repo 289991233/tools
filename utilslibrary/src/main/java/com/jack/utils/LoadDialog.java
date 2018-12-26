@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.RelativeLayout;
 
 
 /**
@@ -15,17 +16,19 @@ import android.view.WindowManager;
 public class LoadDialog extends Dialog {
     private int mWidth, mHeight;
 
-    public LoadDialog(@NonNull Context context) {
-        this(context, 0);
+    public LoadDialog(@NonNull Context context, int show) {
+        this(context, 0, show);
     }
 
-    public LoadDialog(@NonNull Context context, int themeResId) {
+    public LoadDialog(@NonNull Context context, int themeResId, int show) {
         super(context, themeResId != 0 ? themeResId : R.style.dialog_load);
         setCanceledOnTouchOutside(false);
         View mLoadDialogView = View.inflate(context, R.layout.dialog_load, null);
+        RelativeLayout viewById = mLoadDialogView.findViewById(R.id.rl);
         setContentView(mLoadDialogView);
         mWidth = CommUtils.getScreenWidth(context);
         mHeight = CommUtils.getScreenHeight(context);
+        viewById.setVisibility(show == 0 ? View.GONE : View.VISIBLE);
     }
 
     @Override

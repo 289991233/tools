@@ -129,7 +129,7 @@ public class MyWheelDialog extends Dialog implements OnWheelChangedListener, Vie
     @Override
     public void show() {
         if (!isInitData) {
-            mLoadDialog = new LoadDialog(mContext);
+            mLoadDialog = new LoadDialog(mContext,1);
             mLoadDialog.show();
             return;
         }
