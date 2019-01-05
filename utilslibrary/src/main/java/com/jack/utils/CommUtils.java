@@ -20,7 +20,8 @@ public class CommUtils {
      * @param string  提示文字
      */
     public static void Toast(Context context, String string) {
-        Toast toast = Toast.makeText(context, string, Toast.LENGTH_SHORT);
+        Toast toast = Toast.makeText(context, null, Toast.LENGTH_SHORT);
+        toast.setText(string);
         toast.setGravity(Gravity.CENTER, 0, 0);
         toast.show();
     }

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.widget.ImageView;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
@@ -23,6 +24,7 @@ public class ImageLoad {
             }
         }
         RequestOptions options = new RequestOptions();
+        options.diskCacheStrategy(DiskCacheStrategy.ALL);
         Glide.with(context).load(url).apply(options).into(iv);
     }
 
@@ -45,6 +47,7 @@ public class ImageLoad {
         } else {
             options.transform(new RoundedCorners(tag));
         }
+        options.diskCacheStrategy(DiskCacheStrategy.ALL);
         Glide.with(context).load(url).apply(options).into(iv);
     }
 }
