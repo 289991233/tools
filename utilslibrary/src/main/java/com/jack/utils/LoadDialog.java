@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 
 /**
@@ -15,6 +16,7 @@ import android.widget.RelativeLayout;
 
 public class LoadDialog extends Dialog {
     private int mWidth, mHeight;
+    private TextView mTitle;
 
     public LoadDialog(@NonNull Context context, int show) {
         this(context, 0, show);
@@ -25,6 +27,7 @@ public class LoadDialog extends Dialog {
         setCanceledOnTouchOutside(false);
         View mLoadDialogView = View.inflate(context, R.layout.dialog_load, null);
         RelativeLayout viewById = mLoadDialogView.findViewById(R.id.rl);
+        mTitle = mLoadDialogView.findViewById(R.id.tv_title);
         setContentView(mLoadDialogView);
         mWidth = CommUtils.getScreenWidth(context);
         mHeight = CommUtils.getScreenHeight(context);
@@ -39,6 +42,10 @@ public class LoadDialog extends Dialog {
         params.width = mWidth;
         params.height = mHeight;
         window.setAttributes(params);
+    }
+
+    public void setTitle(String title) {
+        mTitle.setText(title);
     }
 
 
