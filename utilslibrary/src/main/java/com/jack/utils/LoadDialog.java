@@ -10,13 +10,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
-/**
- * Created by huisoucw on 2018/10/12.
- */
 
 public class LoadDialog extends Dialog {
     private int mWidth, mHeight;
     private TextView mTitle;
+    private RelativeLayout viewById;
 
     public LoadDialog(@NonNull Context context, int show) {
         this(context, 0, show);
@@ -26,7 +24,7 @@ public class LoadDialog extends Dialog {
         super(context, themeResId != 0 ? themeResId : R.style.dialog_load);
         setCanceledOnTouchOutside(false);
         View mLoadDialogView = View.inflate(context, R.layout.dialog_load, null);
-        RelativeLayout viewById = mLoadDialogView.findViewById(R.id.rl);
+        viewById = mLoadDialogView.findViewById(R.id.rl);
         mTitle = mLoadDialogView.findViewById(R.id.tv_title);
         setContentView(mLoadDialogView);
         mWidth = CommUtils.getScreenWidth(context);
@@ -46,6 +44,11 @@ public class LoadDialog extends Dialog {
 
     public void setTitle(String title) {
         mTitle.setText(title);
+    }
+
+
+    public void hidden() {
+        viewById.setVisibility(View.GONE);
     }
 
 
